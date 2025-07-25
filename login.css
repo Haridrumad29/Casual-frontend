@@ -1,0 +1,103 @@
+:root {
+  --brand-orange: #ff8800;
+  --brand-yellow: #ffd400;
+  --brand-red: #e14129;
+  --light-bg: #fffced;
+  --accent: #fff6e2;
+}
+body {
+  margin: 0;
+  font-family: 'Nunito', Arial, sans-serif;
+  background: var(--light-bg);
+  overflow: hidden;
+}
+.background-logo {
+  background: url("LOGO.png") center center no-repeat, radial-gradient(circle at 50% 30%, var(--brand-yellow), var(--brand-orange), var(--brand-red));
+  opacity: 10;
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;
+  background-size: 600px 600px, cover;
+  animation: logoPulse 10s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%, 100% { opacity: .15; }
+  50% { opacity: .22; }
+}
+.container {
+  display: flex; align-items: center; justify-content: center; height: 100vh; z-index: 1; position: relative;
+  }
+.form-card {
+  min-width: 340px; 
+  padding: 2.2em 2em; position: relative; transition: box-shadow 0.24s;
+  background: transparent;
+  opacity: 5;
+
+}
+.toggle-group {
+  display: flex; justify-content: center; margin-bottom: 1.4em;
+}
+.toggle-btn {
+  background: none; border: none; padding: 0.7em 1.5em; margin: 0 0.6em;
+  font-size: 1.15em; border-radius: 8px; cursor: pointer; color: #222;
+  font-weight: 700; position: relative;
+  transition: background 0.22s, color 0.22s, transform 0.15s;
+}
+.toggle-btn.active, .toggle-btn:hover {
+  background: var(--brand-orange); color: #fff;
+  box-shadow: 0 3px 12px 0 rgba(255,136,0,0.3);
+  transform: scale(1.04);
+}
+.form {
+  display: none; flex-direction: column; gap: 1em; animation: fadeIn 0.6s;
+}
+.form.active {
+  display: flex;
+}
+input, select {
+  outline: none; border: 2px solid #edf1f7; border-radius: 8px;
+  padding: 0.85em 1em; font-size: 1.05em; font-family: inherit; background: var(--accent);
+  transition: border 0.21s, box-shadow 0.21s;
+  cursor:pointer;
+}
+input:focus, select:focus {
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 7px 0 var(--brand-orange);
+}
+.action-btn {
+  margin-top: 0.8em; padding: 0.95em;
+  font-size: 1.14em; border-radius: 9px; border: none;
+  color: #fff; background: var(--brand-yellow); font-weight: bold;
+  cursor: pointer; transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.24s;
+  box-shadow: 0 2px 12px 0 rgba(255,212,0,0.21);
+}
+.action-btn:hover {
+  background: var(--brand-red);
+  color: #fffce4;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6px 20px 0 rgba(225,65,41,0.16);
+}
+.switch-link {
+  margin-top: 0.6em; text-align: center; font-size: 0.98em;
+}
+.switch-link span {
+  color: var(--brand-orange); cursor: pointer; text-decoration: underline;
+  transition: color 0.19s;
+}
+.switch-link span:hover {
+  color: var(--brand-red);
+  text-shadow: 0 2px 12px var(--brand-yellow);
+}
+.forgot-link {
+  font-size: 0.92em; text-align: right; color: #888;
+  margin-top: 0.4em; text-decoration: underline; cursor: pointer;
+  transition: color 0.16s;
+}
+.forgot-link:hover { color: var(--brand-red); }
+
+@media (max-width: 475px) {
+  .form-card { min-width: 90vw; max-width: 98vw; padding: 1.2em 0.5em; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
